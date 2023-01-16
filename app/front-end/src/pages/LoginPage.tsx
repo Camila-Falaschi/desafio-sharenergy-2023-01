@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import { requestLogin, setToken } from "../services/request";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [keepConneted, setKeepConnected] = useState(false);
+  const [keepConnected, setKeepConnected] = useState(false);
   const [failedLogin, setFailedLogin] = useState(false);
 
   useEffect(() => {
@@ -13,12 +14,15 @@ export default function Login() {
 
   let navigate = useNavigate();
 
-  const requestLogin = async (
+  const loginButton = async (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     event.preventDefault();
 
     try {
+      const { token } = await requestLogin('/login', { username, password, keepConnected });
+      setToken(token);
+      localStorage.setItem('token', token);
       navigate('/home');
     } catch (error) {
       setFailedLogin(true);
@@ -54,8 +58,8 @@ export default function Login() {
             <input
               type="checkbox"
               id="keep-connected"
-              checked={keepConneted}
-              onChange={() => setKeepConnected(!keepConneted)}
+              checked={keepConnected}
+              onChange={() => setKeepConnected(!keepConnected)}
             />
             remeber me
           </label>
@@ -64,7 +68,7 @@ export default function Login() {
               *Sorry, your username or password is incorrect. Please, try again.
             </p>
           )}
-          <button type="submit" onClick={(event) => requestLogin(event)}>
+          <button type="submit" onClick={(event) => loginButton(event)}>
             Login
           </button>
         </form>

@@ -1,13 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Header from "../components/Header";
 import ImgCatDefault from "../images/default-cat.svg";
-import catNotFound from "../images/not-found-cat.svg";
-import catCodeImage from "../services/APIHTTPCats";
 
 export default function CatPage() {
-  const [imageSrc, setImageSrc] = useState(ImgCatDefault);
-
-  useEffect(() => {}, [imageSrc]);
+  const [catCode, setCatCode] = useState('');
+  const [isCodeSelected, setIsCodeSelected] = useState(false);
 
   const selectInputRange = (start: number, end: number) => {
     return Array(end - start + 1)
@@ -15,10 +12,14 @@ export default function CatPage() {
       .map((_, index) => start + index);
   };
 
-  const changingCatImage = async (codeNumber: string) => {
-    const image = await catCodeImage(codeNumber);
-    setImageSrc(image);
-  };
+  const handleSelectInput = (value: string) => {
+    if (value === "") {
+      setIsCodeSelected(false)
+      return setCatCode('')
+    };
+    setIsCodeSelected(true);
+    setCatCode(value);
+  }
 
   return (
     <>
@@ -28,7 +29,7 @@ export default function CatPage() {
           <h1>HTTP Cat response status code</h1>
           <select
             id="cat-status-code"
-            onChange={({ target }) => changingCatImage(target.value)}
+            onChange={({ target }) => { handleSelectInput(target.value) }}
           >
             <option value="">--choose a status code--</option>
             {selectInputRange(100, 599).map((codeNumber) => {
@@ -41,10 +42,10 @@ export default function CatPage() {
           </select>
         </div>
         <div>
-          {imageSrc === undefined ? (
-            <img src={catNotFound} alt="cat not found" />
-          ) : (
-            <img src={imageSrc} alt={imageSrc.split("/")[2]} />
+          {(!isCodeSelected)
+          ? (<img src={ImgCatDefault} alt="search-for-a-cat" />)
+          : (
+            <img src={`https://http.cat/${catCode}`} alt={`status-${catCode}`} />
           )}
         </div>
       </main>

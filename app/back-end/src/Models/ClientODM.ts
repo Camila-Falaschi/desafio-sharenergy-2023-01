@@ -11,7 +11,7 @@ class ClientODM {
       email: { type: String, required: true },
       phone: { type: String, required: true },
       address: { type: String, required: true },
-      cpf: { type: Number, required: true },
+      cpf: { type: String, required: true },
     });
     this.model = models.Payment || model('Client', this.schema);
   }

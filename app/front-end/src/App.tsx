@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
-import ClientsList from './components/AddClient';
 import CatPage from './pages/CatPage';
+import ClientsList from './pages/ClientsListPage';
 import Home from './pages/HomePage';
 import Login from './pages/LoginPage';
 import RandomDog from './pages/RandomDogPage';

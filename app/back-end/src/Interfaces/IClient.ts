@@ -4,7 +4,7 @@ interface IClient {
   email: string;
   phone: string;
   address: string;
-  cpf: number;
+  cpf: string;
 }
 
 export default IClient;

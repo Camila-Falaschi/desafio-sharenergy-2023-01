@@ -12,11 +12,11 @@ routes.post(
   (req, res, next) => new ClientController(req, res, next).addNewClient(),
 );
 routes.patch(
-  '/update-client',
+  '/update-client/:id',
   (req, res, next) => new ClientController(req, res, next).updateClient(),
 );
 routes.delete(
-  '/remove-client',
+  '/remove-client/:id',
   (req, res, next) => new ClientController(req, res, next).removeClient(),
 );
 

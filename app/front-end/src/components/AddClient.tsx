@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import AppContext, { PropsAppContext } from "../AppContext/ProviderContext";
+import { requestAddClient } from "../services/request";
 
 export default function AddClient() {
   const { setClientListPageComponent } = useContext(AppContext) as PropsAppContext;
@@ -8,6 +9,10 @@ export default function AddClient() {
   const [phone, setPhone] = useState('');
   const [address, setAddress] = useState('');
   const [cpf, setCpf] = useState('');
+
+  const handleSaveButton = async () => {
+    await requestAddClient('/add-client', { name, phone, address, cpf });
+  }
 
   const handleCancelButton = () => {
     setName('');
@@ -37,7 +42,7 @@ export default function AddClient() {
             CPF
             <input type="text" id="CPF" value={cpf} onChange={({ target }) => { setCpf(target.value) }} required />
           </label>
-          <button type="submit">Save</button>
+          <button type="submit" onClick={ () => handleSaveButton() }>Save</button>
           <button type="button" onClick={ () => handleCancelButton() }>Cancel</button>
         </form>
       </section>

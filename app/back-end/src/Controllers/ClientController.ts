@@ -31,6 +31,8 @@ class ClientController {
   public async updateClient() {
     const data = { ...this.req.body };
     const { id } = this.req.params;
+    console.log(id);
+    
     try {
       const client = await this.service.updateClient(id, data);
       return this.res.status(200).json(client);

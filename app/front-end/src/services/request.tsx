@@ -1,10 +1,8 @@
 import axios from "axios";
+import IClient from "../interfaces/IClient";
+import ILogin from "../interfaces/ILogin";
 
-interface ILogin {
-  username: string;
-  password: string;
-  keepConnected: boolean;
-}
+
 
 const api = axios.create({
   baseURL: `http://localhost:${process.env.REACT_APP_API_PORT || 3001}`
@@ -14,9 +12,13 @@ export const setToken = (token: string) => {
   api.defaults.headers.common.Authorization = token;
 };
 
-export const requestData = async (endpoint: string) => {
+export const requestClientData = async (endpoint: string) => {
   const { data } = await api.get(endpoint);
   return data;
+}
+
+export const requestAddClient = async (endpoint: string, body: IClient) => {
+  await api.post(endpoint, body);
 }
 
 export const requestLogin = async (endpoint: string, body: ILogin) => {

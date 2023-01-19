@@ -8,12 +8,11 @@ class ClientODM {
   constructor() {
     this.schema = new Schema<IClient>({
       name: { type: String, required: true },
-      email: { type: String, required: true },
       phone: { type: String, required: true },
       address: { type: String, required: true },
       cpf: { type: String, required: true },
     });
-    this.model = models.Payment || model('Client', this.schema);
+    this.model = models.Client || model('Client', this.schema);
   }
 
   public async getAll(): Promise<IClient[]> {
@@ -24,20 +23,20 @@ class ClientODM {
     return this.model.create({ ...obj });
   };
 
-  public async update(id: string, obj: Partial<IClient>): Promise<IClient | null> {
-    if (!isValidObjectId(id)) throw Error('Invalid Mongo id');
+  public async update(_id: string, obj: Partial<IClient>): Promise<IClient | null> {
+    if (!isValidObjectId(_id)) throw Error('Invalid Mongo id');
 
     return this.model.findByIdAndUpdate(
-      { id },
+      { _id },
       { ...obj } as UpdateQuery<IClient>,
       { new: true },
     );
   };
 
-  public async remove(id: string): Promise<null> {
-    if (!isValidObjectId(id)) throw Error('Invalid Mongo id');
+  public async remove(_id: string): Promise<null> {
+    if (!isValidObjectId(_id)) throw Error('Invalid Mongo id');
 
-    return this.model.findByIdAndRemove({ id });
+    return this.model.findByIdAndRemove({ _id });
   };
 };
 

@@ -1,6 +1,9 @@
 import 'dotenv/config';
+import mongoose from 'mongoose';
 import connectToDatabase from './Models/Connection';
 import app from './app';
+
+mongoose.set('strictQuery', false);
 
 const PORT = process.env.PORT || 3001;
 connectToDatabase()

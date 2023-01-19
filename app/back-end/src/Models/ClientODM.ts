@@ -1,4 +1,4 @@
-import { Model, Schema, model, models } from 'mongoose';
+import { Model, Schema, UpdateQuery, isValidObjectId, model, models } from 'mongoose';
 import IClient from '../Interfaces/IClient';
 
 class ClientODM {
@@ -19,6 +19,26 @@ class ClientODM {
   public async getAll(): Promise<IClient[]> {
     return this.model.find();
   }
-}
+
+  public async create(obj: IClient): Promise<IClient> {
+    return this.model.create({ ...obj });
+  };
+
+  public async update(id: string, obj: Partial<IClient>): Promise<IClient | null> {
+    if (!isValidObjectId(id)) throw Error('Invalid Mongo id');
+
+    return this.model.findByIdAndUpdate(
+      { id },
+      { ...obj } as UpdateQuery<IClient>,
+      { new: true },
+    );
+  };
+
+  public async remove(id: string): Promise<null> {
+    if (!isValidObjectId(id)) throw Error('Invalid Mongo id');
+
+    return this.model.findByIdAndRemove({ id });
+  };
+};
 
 export default ClientODM;

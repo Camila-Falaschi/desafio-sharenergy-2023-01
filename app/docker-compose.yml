@@ -2,7 +2,7 @@ version: '3'
 services:
   frontend:
     container_name: sharenergy_challange_app_frontend
-    build: front-end/
+    build: frontend/
     restart: on-failure
     ports:
       - 3000:3000
@@ -10,7 +10,7 @@ services:
       - backend
   backend:
     container_name: sharenergy_challange_app_backend
-    build: back-end/
+    build: backend/
     restart: on-failure
     ports:
       - 3001:3001

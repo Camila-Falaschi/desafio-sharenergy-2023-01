@@ -23,14 +23,14 @@ export default function Header() {
   const logOut = () => {
     localStorage.removeItem('token');
     setIsLogged(false);
-    navigate('/login');
+    navigate('/');
   }
 
   return (
     <header>
       {/* {(!isLogged) && <Navigate to='/login' />} */}
       <div className="header">
-        <div className="link-container" onClick={() => goToPage('')}>
+        <div className="link-container" onClick={() => goToPage('home')}>
           <FaHome />
           <h2>Home</h2>
         </div>

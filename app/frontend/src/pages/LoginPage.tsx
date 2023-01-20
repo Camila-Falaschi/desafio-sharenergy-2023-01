@@ -37,7 +37,7 @@ export default function Login() {
           localStorage.setItem('token', 'keep-connected');
         }
         setIsLogged(true);
-        navigate('/');
+        navigate('/home');
       } else {
         throw new Error('invalid login')
       }

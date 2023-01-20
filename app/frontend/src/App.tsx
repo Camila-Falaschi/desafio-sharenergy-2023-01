@@ -9,8 +9,8 @@ import RandomDog from './pages/RandomDogPage';
 function App() {
   return (
     <Routes>
-      <Route path="/login" element={ <Login /> } />
-      <Route path="/" element={ <Home /> } />
+      <Route path="/" element={ <Login /> } />
+      <Route path="/home" element={ <Home /> } />
       <Route path="/cat" element={ <CatPage /> } />
       <Route path="/random-dog" element={ <RandomDog /> } />
       <Route path="/clients-list" element={ <ClientsList /> } />

@@ -76,7 +76,7 @@ Repositório destinado a aplicação desenvolvida pela aplicante Camila Falaschi
 
 ## Apresentação do projeto
 
-<a href="" target="blank">Link para o vídeo no YouTube</a>
+<a href="https://youtu.be/CpVrMC5xNhQ" target="blank">Link para o vídeo no YouTube</a>
 
 
 ## Design da Aplicação
@@ -84,8 +84,6 @@ Repositório destinado a aplicação desenvolvida pela aplicante Camila Falaschi
 Foi planejado as páginas, componentes e aparência do projeto antes de ser iniciado o seu desenvolvimento, e para isso foi montado um modelo no Figma.
 
 <a href="https://www.figma.com/file/YHKV3GBxxThQZsE2DEDoTz/App-desafio-sharenergy-2023-01?node-id=10%3A34&t=IUVnPFxNupbDRfLu-1" target="blank">Link para o modelo do Figma</a>
-
-<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FYHKV3GBxxThQZsE2DEDoTz%2FApp-desafio-sharenergy-2023-01%3Fnode-id%3D10%253A34%26t%3DIUVnPFxNupbDRfLu-1" allowfullscreen></iframe>
 
 
 ## Melhorias para o projeto

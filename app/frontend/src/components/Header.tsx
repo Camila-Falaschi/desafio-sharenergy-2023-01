@@ -1,21 +1,36 @@
+import { useContext, useEffect } from "react";
 import { FaCat, FaDog, FaHome, FaList, FaSignOutAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import AppContext, { PropsAppContext } from "../AppContext/ProviderContext";
 import "./styles/Header.css";
 
 export default function Header() {
+  const { isLogged, setIsLogged } = useContext(AppContext) as PropsAppContext;
+
   let navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!isLogged || !token) {
+      setIsLogged(false);
+    }
+  }, [isLogged, setIsLogged]);
 
   const goToPage = (page: string) => {
     navigate(`/${page}`);
   }
 
   const logOut = () => {
-    localStorage.removeItem('token');
-    goToPage('login');
+    if (!isLogged) {
+      localStorage.removeItem('token');
+      setIsLogged(false);
+      navigate('/login');
+    }
   }
 
   return (
     <header>
+      {/* {(!isLogged) && <Navigate to='/login' />} */}
       <div className="header">
         <div className="link-container" onClick={() => goToPage('')}>
           <FaHome />

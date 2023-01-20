@@ -107,7 +107,11 @@ export default function Home() {
               email: element.email,
               age: dob.age,
             };
-            return <UserCard data={userData} />;
+            return (
+              <div key={`card-${login.username}`}>
+                <UserCard data={userData} />
+              </div>
+            );
           })}
         </div>
         {allUsers && (

@@ -1,19 +1,27 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { requestLogin, setToken } from "../services/request";
+// import { requestLogin, setToken } from "../services/request";
+import AppContext, { PropsAppContext } from "../AppContext/ProviderContext";
 import "./styles/LoginPage.css";
 
 export default function Login() {
+  const { loginUsername, loginPassword, isLogged, setIsLogged } = useContext(AppContext) as PropsAppContext;
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [keepConnected, setKeepConnected] = useState(false);
   const [failedLogin, setFailedLogin] = useState(false);
 
+  let navigate = useNavigate();
+
   useEffect(() => {
     setFailedLogin(false);
   }, [username, password]);
 
-  let navigate = useNavigate();
+  useEffect(() => {
+    navigate('/');
+  }, [isLogged, navigate])
+
 
   const loginButton = async (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -21,10 +29,17 @@ export default function Login() {
     event.preventDefault();
 
     try {
-      const { token } = await requestLogin('/login', { username, password, keepConnected });
-      setToken(token);
-      localStorage.setItem('token', token);
-      navigate('/home');
+      // const { token } = await requestLogin('/login', { username, password, keepConnected });
+      // setToken(token);
+      // localStorage.setItem('token', token);
+      if (username === loginUsername && password === loginPassword) {
+        if (keepConnected) {
+          localStorage.setItem('token', 'keep-connected');
+        }
+        setIsLogged(true);
+      } else {
+        throw new Error('invalid login')
+      }
     } catch (error) {
       setFailedLogin(true);
     }
@@ -48,7 +63,7 @@ export default function Login() {
           <label htmlFor="password" className="input">
             Password
             <input
-              type="text"
+              type="password"
               id="password"
               value={password}
               onChange={({ target }) => setPassword(target.value)}

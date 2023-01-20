@@ -4,6 +4,7 @@ import ImgCatDefault from "../images/default-cat.svg";
 import "./styles/CatPage.css";
 import "./styles/Pages.css";
 
+
 export default function CatPage() {
   const [catCode, setCatCode] = useState('');
   const [isCodeSelected, setIsCodeSelected] = useState(false);

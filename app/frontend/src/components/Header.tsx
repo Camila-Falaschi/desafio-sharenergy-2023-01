@@ -21,11 +21,9 @@ export default function Header() {
   }
 
   const logOut = () => {
-    if (!isLogged) {
-      localStorage.removeItem('token');
-      setIsLogged(false);
-      navigate('/login');
-    }
+    localStorage.removeItem('token');
+    setIsLogged(false);
+    navigate('/login');
   }
 
   return (

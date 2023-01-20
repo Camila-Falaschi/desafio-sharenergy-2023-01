@@ -5,7 +5,7 @@ import AppContext, { PropsAppContext } from "../AppContext/ProviderContext";
 import "./styles/LoginPage.css";
 
 export default function Login() {
-  const { loginUsername, loginPassword, isLogged, setIsLogged } = useContext(AppContext) as PropsAppContext;
+  const { loginUsername, loginPassword, setIsLogged } = useContext(AppContext) as PropsAppContext;
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -18,9 +18,9 @@ export default function Login() {
     setFailedLogin(false);
   }, [username, password]);
 
-  useEffect(() => {
-    navigate('/');
-  }, [isLogged, navigate])
+  // useEffect(() => {
+  //   navigate('/');
+  // }, [isLogged, navigate])
 
 
   const loginButton = async (
@@ -37,6 +37,7 @@ export default function Login() {
           localStorage.setItem('token', 'keep-connected');
         }
         setIsLogged(true);
+        navigate('/');
       } else {
         throw new Error('invalid login')
       }

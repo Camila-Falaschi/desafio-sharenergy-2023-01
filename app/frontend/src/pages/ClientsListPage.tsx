@@ -4,6 +4,7 @@ import AddClient from "../components/AddClient";
 import ClientDetails from "../components/ClientDetails";
 import ClientsTable from "../components/ClientsTable";
 import Header from "../components/Header";
+import "./styles/Pages.css";
 
 export default function ClientsList() {
   const { clientListPageComponent } = useContext(AppContext) as PropsAppContext;
@@ -24,7 +25,7 @@ export default function ClientsList() {
   return (
     <>
       <Header />
-      <main>
+      <main className="main">
         {handleCurrentSection()}
       </main>
     </>

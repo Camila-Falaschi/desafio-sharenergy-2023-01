@@ -1,0 +1,48 @@
+.container-section {
+  background-color: white;
+  width: 100%;
+}
+
+table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table-head th {
+  background-color: #0D5B5B;
+  color: white;
+  border: 1px solid #dddddd;
+  font-size: 20px;
+  padding: 12px;
+  text-align: left;
+}
+
+.table-body td {
+  border: 1px solid #dddddd;
+  padding: 8px;
+}
+
+.table-body tr:nth-child(even) {
+  background-color: rgba(13, 91, 91, 0.17);;
+}
+
+.add-button {
+  align-items: center;
+  background-color: #0D5B5B;
+  border-radius: 60px;
+  bottom: 20px;
+  color: white;
+  display: flex;
+  font-size: 30px;
+  gap: 20px;
+  justify-content: center;
+  right: 20px;
+  position: absolute;
+  width: 300px;
+}
+
+.add-button h1 {
+  color: white;
+  font-size: 30px;
+}

@@ -3,6 +3,7 @@ import { FaArrowRight, FaPlus } from "react-icons/fa";
 import AppContext, { PropsAppContext } from "../AppContext/ProviderContext";
 import IClient from "../interfaces/IClient";
 import { requestClientData } from "../services/request";
+import "./styles/ClientsTable.css";
 
  function ClientsTable(): React.ReactElement  {
   const { setClientListPageComponent, setCurrentClientId } = useContext(AppContext) as PropsAppContext;
@@ -23,33 +24,33 @@ import { requestClientData } from "../services/request";
 
   return (
     <>
-      <section>
+      <section className="container-section">
         <table>
-          <thead>
+          <thead className="table-head">
             <tr>
               <th>Name</th>
               <th>Phone Number</th>
               <th>Address</th>
               <th>CPF</th>
-              <th>Details</th>
+              <th onClick={() => setClientListPageComponent('client-details')}>Details</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="table-body">
             {(clientsData.length > 0) && clientsData.map((item: Required<IClient>) => {
               return (
                 <tr>
-                  <th>{item.name}</th>
-                  <th>{item.phone}</th>
-                  <th>{item.address}</th>
-                  <th>{item.cpf}</th>
-                  <th onClick={() => handleDetailsButton(item.id)}><FaArrowRight /></th>
+                  <td>{item.name}</td>
+                  <td>{item.phone}</td>
+                  <td>{item.address}</td>
+                  <td>{item.cpf}</td>
+                  <td onClick={() => handleDetailsButton(item.id)}><FaArrowRight /></td>
                 </tr>
               )
             })}
           </tbody>
         </table>
       </section>
-      <div onClick={() => setClientListPageComponent('add-client')}>
+      <div className="add-button" onClick={() => setClientListPageComponent('add-client')}>
         <h1>Add a new client</h1>
         <FaPlus />
       </div>

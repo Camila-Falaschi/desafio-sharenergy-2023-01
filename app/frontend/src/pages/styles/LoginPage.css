@@ -1,0 +1,70 @@
+body {
+  background-color: #ECECEC;
+}
+
+.main {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 5%;
+}
+
+.form-login {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 2px 5px 4px rgba(13, 91, 91, 0.5);
+  display: flex;
+  flex-flow: column;
+  gap: 40px;
+  padding: 2% 3% 5%;
+  width: 40%;
+}
+
+h1 {
+  color: #0D5B5B;
+  font-size: 45px;
+}
+
+.input {
+  display: flex;
+  flex-flow: column;
+  font-size: 25px;
+  gap: 8px;
+}
+
+.input input {
+  border-radius: 30px;
+  font-size: 22px;
+  height: 40px;
+}
+
+.checkbox {
+  display: flex;
+  gap: 10px;
+  font-size: 20px;
+}
+
+.checkbox input {
+  height: 20px;
+  width: 20px;
+}
+
+.login-button {
+  align-self: center;
+  background-color: #0D5B5B;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  height: 60px;
+  text-decoration: none;
+  padding: 10px;
+  width: 120px;
+}
+
+.login-error {
+  color: red;
+  font-size: 20px;
+  font-weight: 6g00;
+}

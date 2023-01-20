@@ -1,0 +1,54 @@
+section {
+  background-color: white;
+  width: 100%;
+}
+
+.form-container {
+  display: flex;
+  flex-flow: column;
+  font-size: 25px;
+  gap: 60px;
+  padding: 6%;
+}
+
+.form-container label {
+  display: flex;
+  flex-flow: column;
+  font-weight: 600;
+  font-size: 25px;
+  gap: 8px;
+}
+
+.form-container input {
+  border-radius: 30px;
+  font-size: 22px;
+  height: 40px;
+  width: 40%;
+}
+
+.button-container {
+  display: flex;
+  gap: 400px;
+  padding-top: 20px;
+  width: 80%;
+}
+
+.button {
+  border: none;
+  border-radius: 70px;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  height: 70px;
+  text-decoration: none;
+  padding: 10px;
+  width: 200px;
+}
+
+.save {
+  background-color: #0D5B5B;
+}
+
+.cancel {
+  background: #5B5B5B;
+}

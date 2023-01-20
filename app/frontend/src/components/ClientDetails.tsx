@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { FaArrowLeft, FaEdit } from "react-icons/fa";
 import AppContext, { PropsAppContext } from "../AppContext/ProviderContext";
+import "./styles/ClientDetails.css";
 
 export default function ClientDetails() {
   const { setClientListPageComponent } = useContext(AppContext) as PropsAppContext;
@@ -11,36 +12,38 @@ export default function ClientDetails() {
 
   return (
     <>
-      <section>
-        <div onClick={() => setClientListPageComponent('')}>
+      <section className="details-container">
+        <div className="return-button" onClick={() => setClientListPageComponent('')}>
           <FaArrowLeft />
           <h3>Return</h3>
         </div>
-        <div>
-          <h2>Name</h2>
+        <div className="details">
           <div>
-            <button type="button">Edit<FaEdit /></button>
+            <h2>Name</h2>
+            <div>
+              <button type="button">Edit<FaEdit /></button>
+            </div>
+          </div>
+          <div>
+            <h2>Phone Number</h2>
+            <div>
+              <button type="button">Edit<FaEdit /></button>
+            </div>
+          </div>
+          <div>
+            <h2>Address</h2>
+            <div>
+              <button type="button">Edit<FaEdit /></button>
+            </div>
+          </div>
+          <div>
+            <h2>CPF</h2>
+            <div>
+              <button type="button">Edit<FaEdit /></button>
+            </div>
           </div>
         </div>
-        <div>
-          <h2>Phone Number</h2>
-          <div>
-            <button type="button">Edit<FaEdit /></button>
-          </div>
-        </div>
-        <div>
-          <h2>Address</h2>
-          <div>
-            <button type="button">Edit<FaEdit /></button>
-          </div>
-        </div>
-        <div>
-          <h2>CPF</h2>
-          <div>
-            <button type="button">Edit<FaEdit /></button>
-          </div>
-        </div>
-        <button type="button" onClick={() => handleDeleteClient()}>Delete Client</button>
+        <button className="delete button" type="button" onClick={() => handleDeleteClient()}>Delete Client</button>
       </section>
     </>
   )

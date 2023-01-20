@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Header from "../components/Header";
 import ImgCatDefault from "../images/default-cat.svg";
+import "./styles/CatPage.css";
+import "./styles/Pages.css";
 
 export default function CatPage() {
   const [catCode, setCatCode] = useState('');
@@ -24,8 +26,8 @@ export default function CatPage() {
   return (
     <>
       <Header />
-      <main>
-        <div>
+      <main className="main">
+        <div className="select-container">
           <h1>HTTP Cat response status code</h1>
           <select
             id="cat-status-code"
@@ -41,7 +43,7 @@ export default function CatPage() {
             })}
           </select>
         </div>
-        <div>
+        <div className="cat-image">
           {(!isCodeSelected)
           ? (<img src={ImgCatDefault} alt="search-for-a-cat" />)
           : (

@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { FaRedo } from "react-icons/fa";
 import Header from "../components/Header";
 import { dogImage } from "../services/APIRandomDog";
+import "./styles/Pages.css";
+import "./styles/RandomDogPage.css";
 
 export default function RandomDog() {
   const [dogSrc, setDogSrc] = useState('');
@@ -22,12 +24,12 @@ export default function RandomDog() {
   return (
     <>
       <Header />
-      <main>
-        <div onClick={() => { fetchDogImage() }}>
+      <main className="main">
+        <div className="refresh-button" onClick={() => { fetchDogImage() }}>
           <h1>Refresh</h1>
           <FaRedo />
         </div>
-        <div>
+        <div className="media-container">
           {
             (isVideo)
             ? <video autoPlay loop muted>

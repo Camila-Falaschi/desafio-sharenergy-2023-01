@@ -5,7 +5,7 @@ import ILogin from "../interfaces/ILogin";
 
 
 const api = axios.create({
-  baseURL: `http://localhost:${process.env.REACT_APP_API_PORT || 3001}`
+  baseURL: `http://localhost:3001`
 });
 
 export const setToken = (token: string) => {

@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import AppContext, { PropsAppContext } from "../AppContext/ProviderContext";
 import { requestAddClient } from "../services/request";
+import "./styles/AddClient.css";
 
 export default function AddClient() {
   const { setClientListPageComponent } = useContext(AppContext) as PropsAppContext;
@@ -25,7 +26,7 @@ export default function AddClient() {
   return (
     <>
       <section>
-        <form>
+        <form className="form-container">
           <label htmlFor="client-name">
             Name
             <input type="text" id="client-name" value={name} onChange={({ target }) => { setName(target.value) }} required />
@@ -42,8 +43,10 @@ export default function AddClient() {
             CPF
             <input type="text" id="CPF" value={cpf} onChange={({ target }) => { setCpf(target.value) }} required />
           </label>
-          <button type="submit" onClick={ () => handleSaveButton() }>Save</button>
-          <button type="button" onClick={ () => handleCancelButton() }>Cancel</button>
+          <div className="button-container">
+            <button type="submit" className="button save" onClick={ () => handleSaveButton() }>Save</button>
+            <button type="button" className="button cancel" onClick={ () => handleCancelButton() }>Cancel</button>
+          </div>
         </form>
       </section>
     </>

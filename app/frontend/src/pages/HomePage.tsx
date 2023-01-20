@@ -4,6 +4,8 @@ import Header from "../components/Header";
 import UserCard from "../components/UserCard";
 import IUserAPI from "../interfaces/IUserAPI";
 import { usersList, usersListByPage } from "../services/APIRandomUser";
+import "./styles/HomePage.css";
+import "./styles/Pages.css";
 
 export default function Home() {
   const [pageNumber, setPageNumber] = useState(1);
@@ -53,6 +55,12 @@ export default function Home() {
     setAllUsers(false);
   };
 
+  const handleReturnButton = () => {
+    setAllUsers(true);
+    setSearchValue("");
+    fetchUsersListByPage(1);
+  }
+
   const pageHandle = (buttonType: string) => {
     if (buttonType === "previous" && pageNumber !== 1) {
       setPageNumber((prevNumber) => prevNumber - 1);
@@ -65,18 +73,16 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main>
+      <main className="main">
         {(!allUsers) && (
-          <div onClick={() => {
-            setAllUsers(true);
-            setSearchValue("")
-          }}>
+          <div className="return-button" onClick={() => { handleReturnButton() }}>
             <FaArrowLeft />
             <p>Back</p>
           </div>
         )}
-        <div>
+        <div className="search-bar">
           <input
+            className="input-search"
             type="text"
             id="search-bar"
             value={searchValue}
@@ -85,12 +91,12 @@ export default function Home() {
               setSearchValue(target.value.toLowerCase())
             }
           />
-          <button type="button" onClick={() => searchButtonHandle()}>
+          <button type="button" className="button-search" onClick={() => searchButtonHandle()}>
             Search
             <FaSearch />
           </button>
         </div>
-        <div>
+        <div className="users-section">
           {users.map((element) => {
             const { name, login, dob, picture } = element;
             const fullName = `${name.first} ${name.last}`;
@@ -105,7 +111,7 @@ export default function Home() {
           })}
         </div>
         {allUsers && (
-          <div>
+          <div className="pages-button">
             <button
               type="button"
               onClick={() => pageHandle("previous")}

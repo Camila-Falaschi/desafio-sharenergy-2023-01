@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { requestLogin, setToken } from "../services/request";
+import "./styles/LoginPage.css";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -31,10 +32,10 @@ export default function Login() {
 
   return (
     <main>
-      <div>
-        <form>
+      <div className="main">
+        <form className="form-login">
           <h1>Welcome Back!</h1>
-          <label htmlFor="username">
+          <label htmlFor="username" className="input">
             Username
             <input
               type="text"
@@ -44,7 +45,7 @@ export default function Login() {
               required
             />
           </label>
-          <label htmlFor="password">
+          <label htmlFor="password" className="input">
             Password
             <input
               type="text"
@@ -54,7 +55,7 @@ export default function Login() {
               required
             />
           </label>
-          <label htmlFor="keep-connected">
+          <label className="checkbox" htmlFor="keep-connected">
             <input
               type="checkbox"
               id="keep-connected"
@@ -64,11 +65,11 @@ export default function Login() {
             remeber me
           </label>
           {failedLogin && (
-            <p>
+            <p className="login-error">
               *Sorry, your username or password is incorrect. Please, try again.
             </p>
           )}
-          <button type="submit" onClick={(event) => loginButton(event)}>
+          <button type="submit" className="login-button" onClick={(event) => loginButton(event)}>
             Login
           </button>
         </form>

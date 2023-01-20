@@ -1,12 +1,13 @@
 import IUser from "../interfaces/IUser";
+import "./styles/UserCard.css";
 
 export default function UserCard({ data }: IUser) {
   const { imgsrc, username, fullName, email, age } = data;
 
   return (
-    <div>
-      <img src={imgsrc} alt={fullName} />
-      <div>
+    <div className="card">
+      <img className="image-profile" src={imgsrc} alt={fullName} />
+      <div className="user-details">
         <p>Username: {username}</p>
         <p>Full Name: {fullName}</p>
         <p>Email: {email}</p>
